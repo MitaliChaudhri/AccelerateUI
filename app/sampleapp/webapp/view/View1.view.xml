@@ -1,0 +1,274 @@
+<mvc:View controllerName="sampleapp.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+	xmlns:m="sap.m"
+	height="100%">
+   
+        		<ObjectPageLayout id="ObjectPageLayout"
+		showTitleInHeaderContent="true"
+		showEditHeaderButton="true"
+		editHeaderButtonPress="handleEditBtnPress"
+		useIconTabBar="true"
+		upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<!-- <breadcrumbs>
+					<m:Breadcrumbs id="breadcrumbsId" currentLocationText="Object Page Example" >
+						<m:Link text="Page 1 a very long link" press="handleLink1Press"/>
+						<m:Link text="Page 2 long link" press="handleLink2Press"/>
+					</m:Breadcrumbs>
+				</breadcrumbs> -->
+
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="Kushal Deep" wrapping="true"/>
+						<m:ObjectMarker type="Favorite" class="sapUiTinyMarginBegin"/>
+					</m:HBox>
+				</expandedHeading>
+
+				<snappedHeading>
+					<m:FlexBox  fitContainer="true" alignItems="Center">
+						<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiTinyMarginEnd"/>
+						<m:Title text="Kushal Deep" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+
+				<expandedContent>
+					<m:Text text="Senior Developer"/>
+				</expandedContent>
+
+				<snappedContent>
+					<m:Text text="Senior Developer"/>
+				</snappedContent>
+
+				<snappedTitleOnMobile>
+					<m:Title text="Senior Developer"/>
+				</snappedTitleOnMobile>
+
+				<actions>
+				 <!-- <m:OverflowToolbarButton icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit">
+						<m:layoutData>
+							<m:OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</m:layoutData>
+					</m:OverflowToolbarButton>
+					<m:OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>
+					<m:OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/> -->
+				
+					<m:Button type="Emphasized" text="Create New Request 1" press="togglePage"/>
+					<m:Button type="Ghost" text="Create New Request 2" press="togglePage0"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				 <m:Avatar class="sapUiSmallMarginEnd" src="./test-resources/sap/uxap/images/imageID_275314.png"  displaySize="L" />
+
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd"> 
+						<m:Link text="+91 78 344 32 233"/>
+						<m:Link text="Kushal@initiumdigital.com"/>
+					</layout:VerticalLayout>
+
+					<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+						<m:Image src="./test-resources/sap/uxap/images/linkedin.png"/>
+						<m:Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin"/>
+					</layout:HorizontalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label text="Hello! I am Kushal and I use UI5"/>
+					<m:VBox>
+						<m:Label text=""/>
+						<!-- <m:ProgressIndicator percentValue="30" displayValue="30%"/> -->
+					</m:VBox>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label text="San Jose, USA"/>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+				<m:GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiTinyMarginBottom tileLayout" header="No. Of Requests"  press="onPress"
+		frameType="OneByHalf" subheader="Subtitle">
+		<m:TileContent>
+			<m:Text text="23" />
+		</m:TileContent>
+	</m:GenericTile>
+	<m:GenericTile class="sapUiSmallMarginBegin sapUiTinyMarginTop sapUiTinyMarginBottom tileLayout" header="Active Requests"  press="onPress"
+		frameType="OneByHalf" subheader="Subtitle">
+		<m:TileContent>
+			<m:Text text="13" />
+		</m:TileContent>
+	</m:GenericTile>
+	<m:GenericTile class="sapUiSmallMarginBegin sapUiTinyMarginTop sapUiTinyMarginBottom tileLayout" header="Closed Requests"  press="onPress"
+		frameType="OneByHalf" subheader="Subtitle">
+		<m:TileContent>
+			<m:Text text="5" />
+		</m:TileContent>
+	</m:GenericTile>
+	<m:GenericTile class="sapUiSmallMarginBegin sapUiTinyMarginTop sapUiTinyMarginBottom tileLayout" header="Hold Requests"  press="onPress"
+		frameType="OneByHalf" subheader="Subtitle">
+		<m:TileContent>
+			<m:Text text="5" />
+		</m:TileContent>
+	</m:GenericTile>
+	<!-- <m:GenericTile class="sapUiSmallMarginBegin sapUiTinyMarginTop tileLayout" header="Country-Specific Profit Margin"  press="onPress"
+		frameType="OneByHalf" subheader="Subtitle">
+		<m:TileContent>
+			<m:Text text="23" />
+		</m:TileContent>
+	</m:GenericTile> -->
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" id="goalsSection" title="Active Requests">
+				<heading>
+						</heading>
+				<subSections>
+					<ObjectPageSubSection id="goalsSectionSS1">
+						<!-- <blocks>
+						</blocks> -->
+						<!-- <m:Label text="yo">
+						</m:Label> -->
+						
+							<!-- items="{/ds}" -->
+				<m:Table
+					id="table"
+					inset="false"
+					mode="SingleSelectLeft"
+					>
+					<m:columns>
+                        <m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request ID"/>
+						</m:Column>
+                        <m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request Chosen"/>
+						</m:Column>
+						<m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request Date"/>
+						</m:Column>
+                        <m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Step ID"/>
+						</m:Column>
+						<m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Current Approves"/>
+						</m:Column>
+						<m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request Type Status"/>
+						</m:Column>
+						
+						<m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Action"/>
+						</m:Column>
+						
+						
+					</m:columns>
+
+					<m:items>
+						<m:ColumnListItem vAlign="Middle" 
+                            type="Navigation"
+                            >
+							<m:cells>
+                            <m:Link text="329724aba" press="handleLinkPress" />
+                            <m:Text text="Create" />
+							<m:Text text="12/10/24" />
+							<m:Text text="Request Admin" />
+							<m:Text text="Request Admin" />
+							<m:Text text="self" />
+							<m:Button type="Negative" text="Close It" />
+
+							<!-- <m:Text text="{plannergroup}" /> -->
+							</m:cells>
+							</m:ColumnListItem>
+							<m:ColumnListItem vAlign="Middle" 
+                            type="Navigation"
+                            >
+							<m:cells>
+                            <m:Link text="122947aba" press="handleLinkPress" />
+                            <m:Text text="Delete" />
+							<m:Text text="18/10/24" />
+							<m:Text text="Request Admin" />
+							<m:Text text="Request Admin" />
+							<m:Text text="self" />
+							<m:Button type="Negative" text="Close It" />
+
+							</m:cells>
+						</m:ColumnListItem>
+					</m:items>
+				</m:Table>
+				
+	
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" id="goalsSectibon" title="Closed Requests">
+				<heading>
+					</heading>
+				<subSections>
+					<ObjectPageSubSection id="goalsSecbtionSS1">
+					<m:Table
+					id="table2"
+					mode="SingleSelectLeft"
+					inset="false">
+					<m:columns>
+                        <m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request ID"/>
+						</m:Column>
+                        <m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request Chosen"/>
+						</m:Column>
+						<m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request Date"/>
+						</m:Column>
+                        <m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Step ID"/>
+						</m:Column>
+						<m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Current Approves"/>
+						</m:Column>
+						<m:Column minScreenWidth="Tablet" demandPopin="true">
+							<m:Text text="Request Type Status"/>
+						</m:Column>
+						
+					</m:columns>
+
+					<m:items>
+						<m:ColumnListItem vAlign="Middle" 
+                            type="Navigation"
+                            >
+							<m:cells>
+                            <m:Link text="211322abb" press="handleLinkPress" />
+                            <m:Text text="Create" />
+							<m:Text text="23/5/24" />
+							<m:Text text="Request Admin" />
+							<m:Text text="Request Admin" />
+							<m:Text text="self" />
+							</m:cells>
+							</m:ColumnListItem>
+							<m:ColumnListItem vAlign="Middle" 
+                            type="Navigation"
+                            >
+							<m:cells>
+                            <m:Link text="2132132dd" press="handleLinkPress" />
+                            <m:Text text="Delete" />
+							<m:Text text="30/5/24" />
+							<m:Text text="Request Admin" />
+							<m:Text text="Request Admin" />
+							<m:Text text="self" />
+							</m:cells>
+						</m:ColumnListItem>
+					</m:items>
+				</m:Table>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer />
+				<m:Button type="Accept" text="Accept"/>
+				<m:Button type="Reject" text="Reject"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+   
+</mvc:View>

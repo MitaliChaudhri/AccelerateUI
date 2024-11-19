@@ -1,0 +1,100 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        showHeader="true"
+        title="Add Workflow Mapping"
+        titleAlignment="Center"
+        contentWidth="500px"
+        contentHeight="200px"
+    >
+        <content>
+            <!-- Form 1 -->
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+            <f:content>
+
+            <Label text="Worklflow" />
+            <ComboBox
+                                placeholder="Select workflow"
+                                name="Approver Type"
+                                items="{oModel>/payload/WorkFlow}"
+                                
+                            >
+                                <core:Item
+                                    key="{oModel>id}"
+                                    text="{oModel>text}"
+                                />
+                            </ComboBox>
+
+             <Label text="Connector" />
+            <ComboBox
+                                placeholder="Select connector"
+                                name="Approver Type"
+                                items="{oModel>/payload/Connector}"
+                            >
+                                <core:Item
+                                    key="{oModel>id}"
+                                    text="{oModel>text}"
+                                />
+                            </ComboBox>
+
+            <Label text="Path" />
+            <ComboBox
+                               placeholder="Select path"
+                                name="Approver Type"
+                                items="{oModel>/payload/Path}"
+                                
+                            >
+                                <core:Item
+                                    key="{oModel>id}"
+                                    text="{oModel>text}"
+                                />
+                            </ComboBox>
+
+
+            </f:content>
+            </f:SimpleForm>
+        </content>
+                 
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button
+                        width="30%"
+                        visible="{}"
+                        type="Accept"
+                        text="Save"
+                        press=".onFragMappingSubmit"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        width="30%"
+                        type="Reject"
+                        text="Cancel"
+                        press=".onCancelMappingsFragment"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

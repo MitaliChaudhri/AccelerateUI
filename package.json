@@ -1,0 +1,33 @@
+{
+  "name": "Accelerate",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8",
+    "express": "^4",
+    "@cap-js/hana": "^1"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.7.0",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-riskmaintenance": "cds watch --open riskmaintenance/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy Accelerate --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-rulemaintenance": "cds watch --open rulemaintenance/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-sampleapp": "cds watch --open sampleapp/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "sql": {
+      "native_hana_associations": false
+    }
+  }
+}

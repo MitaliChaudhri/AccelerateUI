@@ -1,0 +1,193 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    	xmlns:l="sap.ui.layout"
+          xmlns:fb="sap.ui.comp.filterbar"
+   
+>
+    <Dialog showHeader="true"  contentWidth="60%" contentHeight="50%">
+    		  <Panel class="sapUiSmallMarginTopBottom" >
+               <headerToolbar>
+        <Toolbar>
+            <!-- Spacer to push text to center -->
+            <ToolbarSpacer />
+            <Title text="T-Code List" />
+            <!-- Spacer to keep text centered in case of additional buttons or controls -->
+            <ToolbarSpacer />
+        </Toolbar>
+    </headerToolbar>
+         <Toolbar width="100%" design="Auto"/>
+                <fb:FilterBar 
+              
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+                showClearOnFB="true" clear="onClear">
+                    <fb:filterGroupItems>
+
+                     <!-- 1. Work Order Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Connector"
+                            label="Connector"
+                            groupName="Group1"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                   
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    <!-- Maintenance Plan Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="T-Code"
+                            label="T-Code"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                 
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Planner Group FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Description"
+                            label="Description"
+                            groupName="Group2"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                
+                                    name="Name"
+                                    selectedKey="{}"
+                                   >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Priority FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Status"
+                            label="Status"
+                            groupName="Group3"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{text}"
+                                        text="{text}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                     </fb:filterGroupItems>
+                </fb:FilterBar>
+            </Panel>
+       <Panel >
+  	      <Table
+                    updateFinished="onTableUpdateFinished"
+                    selectionChange="onIncidentSelectionChange"
+                   
+                >
+	
+		<columns>
+		
+			<Column>
+				<Text text="Connector Name" />
+			</Column>
+			<Column>
+				<Text text="T-Code" />
+			</Column>
+			<Column>
+				<Text text="Description" />
+			</Column>
+			<Column>
+				<Text text="Status" />
+			</Column>
+			<Column >
+				<Text text=""/>
+			</Column>
+          
+          <Column >
+				<Text text=""/>
+			</Column>
+          
+       
+           
+		</columns>
+		<items>
+			<ColumnListItem>
+			<cells>
+				<Text text="{connectorName}" />
+				<Text text="{tcode}" />
+				<Text text="{description}" />
+				<Text text="{status}" />
+			    <HBox justifyContent="SpaceBetween" alignItems="Center">
+				<!-- Switch in the last column -->
+				<Button
+                icon="sap-icon://stop"
+                  text="De-activate"
+                    type="Reject"
+                    press="OnpressDeactivateTGMapping"
+                />
+                <Button
+                icon="sap-icon://delete"
+                 
+                    type="Neutral"
+                    press="OnpressDeleteTGMappig"
+                /></HBox>
+			</cells>
+		</ColumnListItem>
+	</items>
+	</Table>
+</Panel>
+<footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+ <Button   icon="sap-icon://add"
+                  text="Create TG Mapping"
+                    type="Success"
+                    press="OnPressCreateTGMapping"
+                />
+                <Button
+                  text="Close"
+                    type="Reject"
+                    press="OnCloseViewTGMapping"
+                />
+               
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,1615 @@
+<mvc:View controllerName="rulemaintenance.controller.Rulemaintenance"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+       xmlns:fb="sap.ui.comp.filterbar"
+        xmlns:core="sap.ui.core"
+        xmlns:f="sap.f"
+        xmlns:card="sap.f.cards"
+    xmlns:l="sap.ui.layout"
+    	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:tnt="sap.tnt">
+  	<SplitApp
+		id="SplitAppDemo"
+		initialDetail="detail"
+		initialMaster="master">
+
+        	<masterPages>
+			
+			<Page
+				id="master2"
+				title="Menu"
+				backgroundDesign="List"
+				showNavButton="false"
+				navButtonPress=".onPressMasterBack">
+				<List itemPress=".onListItemPress">
+					<items>
+						<StandardListItem title="Configuration" type="Active" custom:to="Config" />
+						<StandardListItem title="Rule Maintenance" type="Active" custom:to="Rule" />
+						
+					</items>
+				</List>
+			</Page>
+        
+		</masterPages>
+		<detailPages>
+			<Page
+				id="Config"
+				title="Configuration"
+				backgroundDesign= "Solid">
+					<IconTabBar
+		id="idIconTabBar1"
+		select=".onFilterSelect"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				icon="sap-icon://synchronize"
+				iconColor="Negative"
+				text="Sync Data"
+                design="Horizontal"
+				key="Sync" >
+                <!-- <headerContent> -->
+			<Button icon="sap-icon://show" text="View Sync Job" press="onViewSync" type="Emphasized"/>
+		<!-- </headerContent> -->
+        <content>
+        	<f:Card class="sapUiMediumMargin" width="270px" height="250px">
+		<f:header>
+			<card:Header
+				title="User Sync"
+				subtitle="Schedule/Run this job to sync the users information."
+				iconSrc="sap-icon://customer" />
+		</f:header>
+		<f:content>
+			<VBox
+				height="110px"
+				class="sapUiSmallMargin"
+				justifyContent="SpaceBetween">
+				<HBox justifyContent="SpaceBetween">
+					<core:Icon src="sap-icon://appointment-2"/>
+                     <Label text="Last Sync Date" class="sapUiLargeMarginEnd"/>
+					<ToolbarSpacer/>
+			<Text text="123"/>
+				</HBox>
+				<HBox renderType="Bare" justifyContent="SpaceBetween">
+					<core:Icon src="sap-icon://away"/>
+                     <Label text="Last Sync Time" class="sapUiLargeMarginEnd"/>
+					<ToolbarSpacer/>
+			<Text text="14:26"/>
+				</HBox>
+				<HBox renderType="Bare" justifyContent="SpaceBetween">
+					<core:Icon src="sap-icon://menu"/>
+                     <Label text="Mode" class="sapUiLargeMarginEnd"/>
+					<ToolbarSpacer/>
+			<Text text="NA"/>
+				</HBox>
+				<HBox renderType="Bare" justifyContent="SpaceBetween">
+					<Text text=""/>
+					<ToolbarSpacer/>
+			 <Button
+						text="Schedule Job"
+						press=".onSchedule"
+						type="Emphasized"
+						class="sapUiTinyMarginBegin" />
+				</HBox>
+			</VBox>
+		</f:content>
+	</f:Card>
+	<f:Card class="sapUiMediumMargin" width="270px" height="250px">
+		<f:header>
+			<card:Header
+				title="Role Sync"
+				subtitle="Schedule/Run this job to sync the users information."
+				iconSrc="sap-icon://customer" />
+		</f:header>
+		<f:content>
+			<VBox
+				height="110px"
+				class="sapUiSmallMargin"
+				justifyContent="SpaceBetween">
+				<HBox justifyContent="SpaceBetween">
+					<core:Icon src="sap-icon://appointment-2"/>
+                     <Label text="Last Sync Date" class="sapUiLargeMarginEnd"/>
+					<ToolbarSpacer/>
+			<Text text="123"/>
+				</HBox>
+				<HBox renderType="Bare" justifyContent="SpaceBetween">
+					<core:Icon src="sap-icon://away"/>
+                     <Label text="Last Sync Time" class="sapUiLargeMarginEnd"/>
+					<ToolbarSpacer/>
+			<Text text="14:26"/>
+				</HBox>
+				<HBox renderType="Bare" justifyContent="SpaceBetween">
+					<core:Icon src="sap-icon://menu"/>
+                     <Label text="Mode" class="sapUiLargeMarginEnd"/>
+					<ToolbarSpacer/>
+			<Text text="NA"/>
+				</HBox>
+				<HBox renderType="Bare" justifyContent="SpaceBetween">
+					<Text text=""/>
+					<ToolbarSpacer/>
+			 <Button
+						text="Schedule Job"
+						press=".onSchedule"
+						type="Emphasized"
+						class="sapUiTinyMarginBegin" />
+				</HBox>
+			</VBox>
+		</f:content>
+	</f:Card>
+    </content>
+     </IconTabFilter>
+                <IconTabFilter
+				icon="sap-icon://connected"
+				iconColor="Positive"
+				text="Connector Config"
+                design="Horizontal"
+				key="Connector" >
+                  <OverflowToolbar>
+        <ToolbarSpacer />
+		<Button icon="sap-icon://add" text="Add Connector" press="onAddConnector" type="Emphasized"/>
+		 </OverflowToolbar>
+        <content>
+        <Table
+		inset="false">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title/>
+					<ToolbarSpacer />
+					<SearchField width="20%" class="sapUiSmallMargin" placeholder="Search here"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Connector Name" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="Description" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				>
+				<Text text="Environment" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Status" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Action" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+        </content>
+         </IconTabFilter>
+                <IconTabFilter
+				icon="sap-icon://role"
+				iconColor="Neutral"
+				text="Maintain Roles"
+                design="Horizontal"
+				key="Role" >
+     <OverflowToolbar>
+        <ToolbarSpacer />
+			<Button icon="sap-icon://add-document" text="Import" press="onImport" type="Transparent"/>
+            <Button icon="sap-icon://show" text="View Imports" press="onViewImport" type="Emphasized"/>
+            <Button icon="sap-icon://add" text="Add" press="onAddMaintainRole" type="Accept"/>
+	   </OverflowToolbar>
+      
+        <content>
+		<fb:FilterBar
+      id="filterBar"
+      search="onSearch"
+	  
+      advancedMode="true">
+      <fb:filterItems>
+        <!-- Filter Item for Product Category -->
+        <fb:FilterItem name="connector" label="Connector Name">
+          <fb:control>
+            <ComboBox>
+              <items>
+                <!-- <core:Item key="{id}" text="{name}" /> -->
+              </items>
+            </ComboBox>
+          </fb:control>
+        </fb:FilterItem>
+        <fb:FilterItem name="roletype" label="Role Type">
+          <fb:control>
+            <ComboBox>
+              <items>
+                <!-- <core:Item key="{id}" text="{name}" /> -->
+              </items>
+            </ComboBox>
+          </fb:control>
+        </fb:FilterItem>
+		 <fb:FilterItem name="rolename" label="Role Name">
+          <fb:control>
+            <ComboBox>
+              <items>
+                <!-- <core:Item key="{id}" text="{name}" /> -->
+              </items>
+            </ComboBox>
+          </fb:control>
+        </fb:FilterItem>
+		 <fb:FilterItem name="businessprocess" label="Business Process">
+          <fb:control>
+            <ComboBox>
+              <items>
+                <!-- <core:Item key="{id}" text="{name}" /> -->
+              </items>
+            </ComboBox>
+          </fb:control>
+        </fb:FilterItem>
+		<fb:FilterItem name="businesssubprocess" label="Business Sub Process">
+          <fb:control>
+            <ComboBox>
+              <items>
+                <!-- <core:Item key="{id}" text="{name}" /> -->
+              </items>
+            </ComboBox>
+          </fb:control>
+        </fb:FilterItem>
+			<fb:FilterItem name="primaryowner" label="Primary Owner SAP ID">
+          <fb:control>
+            <ComboBox>
+              <items>
+                <!-- <core:Item key="{id}" text="{name}" /> -->
+              </items>
+            </ComboBox>
+          </fb:control>
+        </fb:FilterItem>
+      </fb:filterItems>
+    </fb:FilterBar>
+
+        <Table
+		inset="false">
+		<!-- <headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title/>
+					<ToolbarSpacer />
+					<SearchField width="20%" class="sapUiSmallMargin" placeholder="Search here"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar> -->
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Connector" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Role Name" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				>
+				<Text text="Role Desc" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Role Type" />
+			</Column>
+            <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Business Process" />
+			</Column>
+              <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Sub Process" />
+			</Column>
+             <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Primary Owner" />
+			</Column>
+             <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Secondary Owner" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Action" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+        </content>
+          </IconTabFilter>
+                <IconTabFilter
+				icon="sap-icon://accept"
+				iconColor="Critical"
+				text="Training Verification"
+                design="Horizontal"
+				key="Training" >
+              <OverflowToolbar>
+        <ToolbarSpacer />
+        <Button icon="sap-icon://add" text="Add" press="onAdd" type="Emphasized" />
+    </OverflowToolbar>
+    <Table>
+					<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text=""/>
+					<ToolbarSpacer />
+					<SearchField width="25%" search=".onSearch" />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+                    <columns>
+                        <Column width="23%">
+                            <Text text="Training Name" />
+                        </Column>
+                     
+						<Column width="23%"> 
+                            <Text text="Traning Mode" />
+                        </Column>
+						<Column width="8%">
+                            <Text text="Action" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                          
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                 </IconTabFilter>
+                <IconTabFilter
+				icon="sap-icon://step"
+				iconColor="Default"
+				text="Workflow"
+                design="Horizontal"
+				key="workflow" >    <Panel expandable="true" headerText="Create/Maintain Approver Groups"  width="auto" class="sapUiResponsiveMargin">
+
+            <headerToolbar>
+			<OverflowToolbar style="Clear">
+				<Title text="Create/Maintain Approver Groups" />
+				<ToolbarSpacer />
+				<Button icon="sap-icon://add" text="Add" type="Success" press="onAprroveAdd"/>
+				
+			</OverflowToolbar>
+		</headerToolbar>
+        <content>
+
+        <Table id="idProductsTable"
+        inset="false">
+        <!-- <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title/>
+                    <ToolbarSpacer />
+                    <SearchFi width="20%" class="sapUiSmallMargin" placeholder="Search here"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar> -->
+        <columns>
+            <Column
+                width="12em">
+                <Text text="GROUP NAME" />
+            </Column>
+            <Column
+                minScreenWidth="Tablet"
+                demandPopin="true">
+                <Text text="DESCRIPTION" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                >
+                <Text text="GROUP TYPE" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="# APPROVERS" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="ESCALATION" />
+            </Column>
+              <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="MODIFILED ON" />
+            </Column>
+             <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="MODIFIED BY" />
+            </Column>
+             
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                   
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+
+	</content>
+	</Panel>
+
+    <!-- Panel 2 : Create/Maintain Workflow Paths -->
+        <Panel expandable="true" headerText="Create/Maintain Workflow Paths" width="auto" class="sapUiResponsiveMargin">
+
+            <headerToolbar>
+			<OverflowToolbar style="Clear">
+				<Title text="Create/Maintain Workflow Paths" />
+				<ToolbarSpacer />
+				<Button icon="sap-icon://add" text="Add" type="Success" press="onAddPaths"/>
+				
+			</OverflowToolbar>
+		</headerToolbar>
+        <content>
+
+        <Table id="PathTable"
+        inset="false">
+      
+        <columns>
+            <Column
+                width="12em">
+                <Text text="PATH NAME" />
+            </Column>
+            <Column
+                minScreenWidth="Tablet"
+                demandPopin="true">
+                <Text text="PATH DESCRIPTION" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                >
+                <Text text="# GROUPS" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="CREATED BY" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="ACTION" />
+            </Column>
+
+             
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                                    <Input value="business_path" />
+
+                                    <Input value="business path" maxLength="10"/>
+
+                                    <Input value="1" />
+
+                                    <Input value="priyank@initiumdigital.com" />
+                                    <HBox justifyContent="Center" alignItems="Center">
+                                    
+                                    <Button
+                                        icon="sap-icon://edit"
+                                        type="Default"
+                                        press="onDelete"
+                                        class="sapUiTinyMarginEnd"
+                                        
+                                    />
+                                    <Button
+                                        
+                                        icon="sap-icon://delete"
+                                        type="Critical"
+                                        press="onDelete"
+                                          class="sapUiSmallTinyBegin"
+                                      
+                                    />                
+                                    </HBox> 
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+
+	</content>
+	</Panel>
+
+    <!-- Panel 3 : Create/Maintain Workflow Mappings -->
+    <Panel expandable="true" headerText="Create/Maintain Workflow Mappings" width="auto" class="sapUiResponsiveMargin">
+
+            <headerToolbar>
+			<OverflowToolbar style="Clear">
+				<Title text="Create/Maintain Workflow Mappings" />
+				<ToolbarSpacer />
+				<Button icon="sap-icon://add" text="Add" type="Success" press="onMappingAdd"/>
+				
+			</OverflowToolbar>
+		</headerToolbar>
+        <content>
+
+        <Table id="MappingsTable"
+        inset="false">
+        <!-- <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title/>
+                    <ToolbarSpacer />
+                    <SearchField width="20%" class="sapUiSmallMargin" placeholder="Search here"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar> -->
+        <columns>
+            <Column
+                width="15em">
+                <Text text="WORKFLOW" />
+            </Column>
+            <Column
+                minScreenWidth="Tablet"
+                demandPopin="true">
+                <Text text="CONNECTOR NAME" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                >
+                <Text text="PATH NAME" />
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="CREATED BY" width="17em"/>
+            </Column>
+            <Column
+                minScreenWidth="Desktop"
+                demandPopin="true"
+                hAlign="Center">
+                <Text text="ACTION" />
+            </Column>
+            
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                                    <Input value="CREATE USER" />
+
+                                    <Input value="TGDCLNTI100" maxLength="10"/>
+
+                                    <Input value="Create_User" />
+
+                                    <Input value="priyanka@initiumdigital.com" />
+
+                                    <HBox justifyContent="Center" alignItems="Center">
+                                    
+                                    <Button
+                                        icon="sap-icon://edit"
+                                        type="Default"
+                                        press="onDelete"
+                                        class="sapUiSmallTinyBegin"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        type="Critical"
+                                        press="onDelete"
+                                        class="sapUiSmallTinyBegin"
+                                    />                
+                                    </HBox> 
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+
+	</content>
+	</Panel>
+	</IconTabFilter>	
+
+		</items>
+		
+	</IconTabBar>
+			</Page>
+			<Page
+				id="Rule"
+				title="Rule Maintenance"
+				backgroundDesign= "Solid"
+				
+				navButtonPress=".onPressDetailBack">
+				<IconTabBar
+		id="idIconTabBar"
+		select=".onFilterSelect"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			
+			<IconTabFilter
+				icon="sap-icon://crossed-line-chart"
+				iconColor="Negative"
+				text="Risk Maintenance"
+                design="Horizontal"
+				key="Tab1" >
+                   <Panel class="sapUiSmallMarginTopBottom">
+                    <headerToolbar>
+        <Toolbar>
+           
+            <ToolbarSpacer />
+            <Title text="Risk Maintenance" />
+           
+            <ToolbarSpacer />
+        </Toolbar>
+    </headerToolbar>
+         <Toolbar id="toolbarFiltersAndButton" width="100%" design="Auto"/>
+                <fb:FilterBar 
+                id="filterbar"
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+                showClearOnFB="true" clear="onClear">
+                    <fb:filterGroupItems>
+
+                     <!-- 1. Work Order Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Risk ID"
+                            label="Risk ID"
+                            groupName="Group1"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                    id="Multi8"
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    <!-- Maintenance Plan Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Risk Type"
+                            label="Risk Type"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                    id="Multi6"
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Planner Group FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Risk Level"
+                            label="Risk Level"
+                            groupName="Group2"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                    id="Multi5"
+                                    name="Name"
+                                    selectedKey="{}"
+                                   >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Priority FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Status"
+                            label="Status"
+                            groupName="Group3"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                    id="Multi7"
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{text}"
+                                        text="{text}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                     </fb:filterGroupItems>
+                </fb:FilterBar>
+            </Panel>
+
+            <Panel >
+            <HBox justifyContent="End" alignItems="Center" width="100%">
+            <Button 
+                icon="sap-icon://create-form"
+					text="Generate Rule"
+                    press="onPressGenerateRule"
+                    type="Attention"
+                        class="sapUiSmallMarginEnd">
+                </Button>
+                   <Button 
+                icon="sap-icon://add"
+					text="Add Risk Maintenance"
+                    press="OnPressAddRiskMaintenance"
+                    type="Accept">
+                </Button>
+                </HBox>
+            </Panel>
+      
+  	      <Table
+                    updateFinished="onTableUpdateFinished"
+                    selectionChange="onIncidentSelectionChange"
+                    id="table"
+                    mode="SingleSelectLeft">
+	
+		<columns>
+		
+			<Column>
+				<Text text="Risk ID" />
+			</Column>
+			<Column>
+				<Text text="Description" />
+			</Column>
+			<Column>
+				<Text text="Risk Type" />
+			</Column>
+			<Column>
+				<Text text="Risk Level" />
+			</Column>
+			<Column>
+				<Text text="TG 1" />
+			</Column>
+            <Column>
+				<Text text="TG 2" />
+			</Column>
+			<Column>
+				<Text text="Status" />
+			</Column>
+            <Column width="230px">
+				<Text text=" " />
+			</Column>
+              <Column width="90px">
+				<Text text=" " />
+			</Column>
+       
+           
+		</columns>
+		<items>
+			<ColumnListItem  >
+				<cells>
+				<Link
+					text="{orderno}" press="onPressWorkOrderNumber"/>
+				<Text
+					text="{orderdesc}"/>
+				<Text
+					text="{planno}" />
+                <Text
+					text="{createdBy}" />
+				<Text
+					text="{priority}"/>
+                <Text
+					text="{plannergroup}"/>
+                     <Text
+					text="{plannergroup}"/>
+           
+              <HBox justifyContent="SpaceBetween" alignItems="Center">
+                   <Button 
+                icon="sap-icon://show"
+					text="View Rule"
+                    press="OnPressViewRule"
+                    type="Accept">
+                </Button>
+                
+                 
+                  
+                     <Button 
+                icon="sap-icon://delete"
+				text="De-activate"
+                    press="OnPressDeactivate"
+                    type="Neutral">
+                </Button>  </HBox>
+                 <HBox justifyContent="SpaceBetween" alignItems="Center">
+                	<Button 
+                icon="sap-icon://edit"
+			
+                    press="OnPressAddRiskMaintenance"
+                    type="Attention">
+                </Button>
+                <Button 
+                icon="sap-icon://delete"
+			
+                    press="OndeleteRisk"
+                    type="Reject">
+                </Button>
+                 
+              
+              </HBox>
+                
+			</cells>
+		</ColumnListItem>
+	</items>
+	</Table>
+
+                </IconTabFilter>
+
+                	<IconTabFilter
+				icon="sap-icon://crossed-line-chart"
+				iconColor="Marker"
+				text="TG Maintenance"
+                design="Horizontal"
+				key="Tab1" >
+                   <Panel class="sapUiSmallMarginTopBottom">
+                    <headerToolbar>
+        <Toolbar>
+           
+            <ToolbarSpacer />
+            <Title text="TG Maintenance" />
+           
+            <ToolbarSpacer />
+        </Toolbar>
+    </headerToolbar>
+         <Toolbar  width="100%" design="Auto"/>
+                <fb:FilterBar 
+               
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+                showClearOnFB="true" clear="onClear">
+                    <fb:filterGroupItems>
+
+                     <!-- 1. Work Order Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="TG ID"
+                            label="TG ID"
+                            groupName="Group1"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    <!-- Maintenance Plan Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Business Process"
+                            label="Business Process"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                         <fb:FilterGroupItem
+                            name="Business Process Owner"
+                            label="Business Process Owner"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Planner Group FilterGroupItem -->
+                       
+                     </fb:filterGroupItems>
+                </fb:FilterBar>
+            </Panel>
+
+      
+       <Panel >
+            <HBox justifyContent="End" alignItems="Center" width="100%">
+            <Button 
+                icon="sap-icon://add"
+					text="Add TG Maintenance"
+                    press="OnPressAddTGMaintenance"
+                    type="Attention"
+                        class="sapUiSmallMarginEnd">
+                </Button>
+                 
+                </HBox>
+            </Panel>
+      
+  	      <Table
+                    updateFinished="onTableUpdateFinished"
+                    selectionChange="onIncidentSelectionChange"
+                 
+                    mode="SingleSelectLeft">
+	
+		<columns>
+		
+			<Column>
+				<Text text="TG ID" />
+			</Column>
+			<Column>
+				<Text text="Description" />
+			</Column>
+			<Column>
+				<Text text="Business Process" />
+			</Column>
+			<Column>
+				<Text text="Business Process Owner" />
+			</Column>
+			
+            <Column width="230px">
+				<Text text=" " />
+			</Column>
+              <Column width="90px">
+				<Text text=" " />
+			</Column>
+       
+           
+		</columns>
+		<items>
+			<ColumnListItem  >
+				<cells>
+				<Link
+					text="{orderno}" press="onPressWorkOrderNumber"/>
+				<Text
+					text="{orderdesc}"/>
+				<Text
+					text="{planno}" />
+                <Text
+					text="{createdBy}" />
+			
+           
+              <HBox justifyContent="SpaceBetween" alignItems="Center">
+                   <Button 
+                icon="sap-icon://org-chart"
+					text="TG Mapping"
+                    press="OnPressTGMapping"
+                    type="Accept">
+                </Button>
+                
+                 
+                  
+                   
+             
+                	<Button 
+                icon="sap-icon://edit"
+			
+                    press="OnPressAddTGMaintenance"
+                    type="Attention">
+                </Button>
+                <Button 
+                icon="sap-icon://delete"
+			
+                    press="OndeleteTGMaintenance"
+                    type="Reject">
+                </Button>
+                 
+              
+              </HBox>
+                
+			</cells>
+		</ColumnListItem>
+	</items>
+	</Table>
+
+                </IconTabFilter>
+                <!-- <IconTabFilter icon="sap-icon://add" key="tab1"><Text text="This is a very long text that will wrap if necessary" wrapping="true" /></IconTabFilter> -->
+		<IconTabFilter
+				icon="sap-icon://process"
+				iconColor="Critical"
+				text="Business Process"
+                design="Horizontal"
+				key="Tab3" >
+                   <Panel class="sapUiSmallMarginTopBottom">
+                    <headerToolbar>
+        <Toolbar>
+           
+            <ToolbarSpacer />
+            <Title text="Business Process" />
+           
+            <ToolbarSpacer />
+        </Toolbar>
+    </headerToolbar>
+         <Toolbar  width="100%" design="Auto"/>
+                <fb:FilterBar 
+               
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+                showClearOnFB="true" clear="onClear">
+                    <fb:filterGroupItems>
+
+                     <!-- 1. Work Order Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Business Process"
+                            label="Business Process"
+                            groupName="Group1"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    <!-- Maintenance Plan Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Primary Owner"
+                            label="Primary Owner"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                         <fb:FilterGroupItem
+                            name="Secondary Owner"
+                            label="Secondary Owner"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Planner Group FilterGroupItem -->
+                       
+                     </fb:filterGroupItems>
+                </fb:FilterBar>
+            </Panel>
+
+      
+       <Panel >
+            <HBox justifyContent="End" alignItems="Center" width="100%">
+            <Button 
+                icon="sap-icon://add"
+					text="Add Business Process"
+                    press="OnAddBusinessProcess"
+                     type="Accept"
+                        class="sapUiSmallMarginEnd">
+                </Button>
+                 
+                </HBox>
+            </Panel>
+      
+  	      <Table
+                    updateFinished="onTableUpdateFinished"
+                    selectionChange="onIncidentSelectionChange"
+                 
+                    mode="SingleSelectLeft">
+	
+		<columns>
+		
+			<Column>
+				<Text text="Business Process" />
+			</Column>
+			<Column>
+				<Text text="Description" />
+			</Column>
+			<Column>
+				<Text text="Primary Owner" />
+			</Column>
+			<Column>
+				<Text text="Secondary Owner" />
+			</Column>
+			
+          
+              <Column width="90px">
+				<Text text=" " />
+			</Column>
+       
+           
+		</columns>
+		<items>
+			<ColumnListItem  >
+				<cells>
+				<Link
+					text="{orderno}" press="onPressWorkOrderNumber"/>
+				<Text
+					text="{orderdesc}"/>
+				<Text
+					text="{planno}" />
+                <Text
+					text="{createdBy}" />
+			
+           
+              <HBox justifyContent="SpaceBetween" alignItems="Center">
+            
+                 
+                  
+                   
+             
+                	<Button 
+                icon="sap-icon://edit"
+			
+                    press="OnAddBusinessProcess"
+                    type="Attention">
+                </Button>
+                <Button 
+                icon="sap-icon://delete"
+			
+                    press="OnPressDeleteBusinessProcess"
+                    type="Reject">
+                </Button>
+                 
+              
+              </HBox>
+                
+			</cells>
+		</ColumnListItem>
+	</items>
+	</Table>
+
+                </IconTabFilter>
+		
+                     
+                <!-- <IconTabFilter icon="sap-icon://add" key="tab1"><Text text="This is a very long text that will wrap if necessary" wrapping="true" /></IconTabFilter> -->
+		<IconTabFilter
+				icon="sap-icon://process"
+				iconColor="Positive"
+				text="Business Sub Process"
+                design="Horizontal"
+				key="Tab3" >
+                   <Panel class="sapUiSmallMarginTopBottom">
+                    <headerToolbar>
+        <Toolbar>
+           
+            <ToolbarSpacer />
+            <Title text="Business Sub Process" />
+           
+            <ToolbarSpacer />
+        </Toolbar>
+    </headerToolbar>
+         <Toolbar  width="100%" design="Auto"/>
+                <fb:FilterBar 
+               
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+                showClearOnFB="true" clear="onClear">
+                    <fb:filterGroupItems>
+
+                     <!-- 1. Work Order Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Business Process"
+                            label="Business Process"
+                            groupName="Group1"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    <!-- Maintenance Plan Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Sub Process Name"
+                            label="Sub Process Name"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                       
+
+                        <!-- Planner Group FilterGroupItem -->
+                       
+                     </fb:filterGroupItems>
+                </fb:FilterBar>
+            </Panel>
+
+      
+       <Panel >
+            <HBox justifyContent="End" alignItems="Center" width="100%">
+            <Button 
+                icon="sap-icon://add"
+					text="Add Sub Business Process"
+                    press="OnAddSubBusinessProcess"
+                     type="Accept"
+                        class="sapUiSmallMarginEnd">
+                </Button>
+                 
+                </HBox>
+            </Panel>
+      
+  	      <Table
+                    updateFinished="onTableUpdateFinished"
+                    selectionChange="onIncidentSelectionChange"
+                 
+                    mode="SingleSelectLeft">
+	
+		<columns>
+		
+			<Column>
+				<Text text="Business Process" />
+			</Column>
+			<Column>
+				<Text text="Sub Process Name" />
+			</Column>
+			<Column>
+				<Text text="Sub Process Description" />
+			</Column>
+		
+			
+          
+              <Column width="90px">
+				<Text text=" " />
+			</Column>
+       
+           
+		</columns>
+		<items>
+			<ColumnListItem  >
+				<cells>
+				<Link
+					text="{orderno}" press="onPressWorkOrderNumber"/>
+				<Text
+					text="{orderdesc}"/>
+				<Text
+					text="{planno}" />
+               
+			
+           
+              <HBox justifyContent="SpaceBetween" alignItems="Center">
+            
+                 
+                  
+                   
+             
+                	<Button 
+                icon="sap-icon://edit"
+			
+                    press="OnAddSubBusinessProcess"
+                    type="Attention">
+                </Button>
+                <Button 
+                icon="sap-icon://delete"
+			
+                    press="OnPressDeleteSubBusinessProcess"
+                    type="Reject">
+                </Button>
+                 
+              
+              </HBox>
+                
+			</cells>
+		</ColumnListItem>
+	</items>
+	</Table>
+
+                </IconTabFilter>
+
+                	<IconTabFilter
+				icon="sap-icon://role"
+				iconColor="Tile"
+                design="Horizontal"
+				text="Business Process Roles"
+				key="Tab5" >
+                
+                   <Panel class="sapUiSmallMarginTopBottom">
+                    <headerToolbar>
+        <Toolbar>
+           
+            <ToolbarSpacer />
+            <Title text="Business Process Role" />
+           
+            <ToolbarSpacer />
+        </Toolbar>
+    </headerToolbar>
+         <Toolbar  width="100%" design="Auto"/>
+                <fb:FilterBar 
+               
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+                showClearOnFB="true" clear="onClear">
+                    <fb:filterGroupItems>
+
+                     <!-- 1. Work Order Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Business Process"
+                            label="Business Process"
+                            groupName="Group1"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    <!-- Maintenance Plan Number FilterGroupItem -->
+                        <fb:FilterGroupItem
+                            name="Business Role"
+                            label="Business Role"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                       
+ <fb:FilterGroupItem
+                            name="Connector"
+                            label="Connector"
+                            groupName="Group4"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    name="Name"
+                                    selectedKey="{}"
+                                  >
+                                    <core:Item
+                                        key="{}"
+                                        text="{}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <!-- Planner Group FilterGroupItem -->
+                       
+                     </fb:filterGroupItems>
+                </fb:FilterBar>
+            </Panel>
+
+      
+       <Panel >
+            <HBox justifyContent="End" alignItems="Center" width="100%">
+            <Button 
+                icon="sap-icon://add"
+					text="Add Business Process Role"
+                    press="OnAddBusinessProcessRole"
+                     type="Accept"
+                        class="sapUiSmallMarginEnd">
+                </Button>
+                 
+                </HBox>
+            </Panel>
+      
+  	      <Table
+                    updateFinished="onTableUpdateFinished"
+                    selectionChange="onIncidentSelectionChange"
+                 
+                    mode="SingleSelectLeft">
+	
+		<columns>
+		
+			<Column>
+				<Text text="Business Process" />
+			</Column>
+			<Column>
+				<Text text="Business Role" />
+			</Column>
+			<Column>
+				<Text text="Description" />
+			</Column>
+		<Column>
+				<Text text="Connector" />
+			</Column>
+            <Column>
+				<Text text="Roles" />
+			</Column>
+			
+          
+              <Column width="90px">
+				<Text text=" " />
+			</Column>
+       
+           
+		</columns>
+		<items>
+			<ColumnListItem  >
+				<cells>
+				<Link
+					text="{orderno}" press="onPressWorkOrderNumber"/>
+				<Text
+					text="{orderdesc}"/>
+				<Text
+					text="{planno}" />
+                    	<Text
+					text="{planno}" />
+                    	<Text
+					text="{planno}" />
+                    	<Text
+					text="{planno}" />
+               
+			
+           
+              <HBox justifyContent="SpaceBetween" alignItems="Center">
+            
+                 
+                  
+                   
+             
+                	<Button 
+                icon="sap-icon://edit"
+			
+                    press="OnAddBusinessProcessRole"
+                    type="Attention">
+                </Button>
+                <Button 
+                icon="sap-icon://delete"
+			
+                    press="OnPressDeleteBusinessProcessRole"
+                    type="Reject">
+                </Button>
+                 
+              
+              </HBox>
+                
+			</cells>
+		</ColumnListItem>
+	</items>
+	</Table>
+
+                </IconTabFilter>
+                
+                
+		    </items>
+		
+	</IconTabBar>
+				
+			</Page>
+			
+
+		</detailPages>
+	
+	</SplitApp>
+    	
+</mvc:View>

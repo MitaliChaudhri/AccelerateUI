@@ -1,0 +1,102 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:upload="sap.m.upload" xmlns:u="sap.ui.unified"
+		xmlns:t="sap.ui.table"
+		xmlns:layout="sap.ui.layout" xmlns:c="sap.ui.core"  xmlns:m="sap.m">
+   <Dialog title ="View Sync Job">
+<Table 
+		inset="false">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title/>
+					<ToolbarSpacer />
+					<SearchField width="20%" class="sapUiSmallMargin" placeholder="Search here"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Sync Name" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Connector" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				>
+				<Text text="Sync Type" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Schedule By" />
+			</Column>
+            <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Schedule Date" />
+			</Column>
+              <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Status" />
+			</Column>
+             <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Recurring Plan" />
+			</Column>
+             <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="End Date" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Action" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+               
+
+				
+			
+			 	
+          
+            
+			
+			
+			  
+			 
+			 
+
+          
+           
+		 <!-- <beginButton>
+            <Button text="Save" press="onSubmit" />
+        </beginButton> -->
+        <endButton>
+            <Button text="Cancel" press="onCancelView" />
+        </endButton>
+   </Dialog>
+</core:FragmentDefinition>

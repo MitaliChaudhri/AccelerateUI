@@ -1,0 +1,20 @@
+/* Enter your custom styles here */
+.boldLargeText {
+    font-weight: bold;
+    font-size: 1.5rem; /* Adjust size as needed */
+}
+
+.hboxShadowBackground {
+    background-color: #f4f4f4; /* Light grey background */
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.hboxShadowBackgroundd {
+    background-color: #d0c9c9; /* Light grey background */
+    padding: 7px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    color: #f4f4f4;
+}

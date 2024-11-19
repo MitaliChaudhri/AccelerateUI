@@ -1,0 +1,249 @@
+<mvc:View
+  controllerName="sampleapp.controller.View2"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns:mvc="sap.ui.core.mvc"
+  displayBlock="true"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+
+  <Page id="view2" title="Create New Request">
+    <!-- Back Button Container -->
+    <HBox justifyContent="End">
+      <Button text="Back" class="sapUiSmallMargin"  type="Attention" icon="sap-icon://arrow-left" press="togglePageback" />
+    </HBox>
+    <VBox class="sapUiSmallMargin  hboxShadowBackground">
+    <!-- Header -->
+    <Title text="Basic User Information" level="H2" class="sapUiTinyMarginBottom sapUiSmallMarginStart" />
+
+    <!-- HBox for User Information -->
+    <HBox class="sapUiSmallMargin " alignItems="Center" justifyContent="SpaceBetween">
+        <!-- First Name -->
+        <VBox width="23%">
+            <Label text="First Name" />
+            <Input value="Kushal" editable="false" />
+        </VBox>
+
+        <!-- Last Name -->
+        <VBox width="23%">
+            <Label text="Last Name" />
+            <Input value="Deep" editable="false" />
+        </VBox>
+
+        <!-- Phone Number -->
+        <VBox width="23%">
+            <Label text="Phone No" />
+            <Input value="9823244233" editable="false" />
+        </VBox>
+
+        <!-- Email ID -->
+        <VBox width="23%">
+            <Label text="Email ID" />
+            <Input value="Kushal@initiumdigital.com" editable="false" />
+        </VBox>
+    </HBox>
+</VBox>
+    
+    <!-- Form Section -->
+    <VBox class="sapUiMediumMarginBegin">
+      <Label labelFor="crt" text="Create New Request" />
+      
+      <!-- Radio Button Group -->
+      <RadioButtonGroup id="crt" columns="2" valueState="Information" class="sapUiTinyMarginBottom">
+        <RadioButton id="self" text="Request For Self" />
+        <!-- <RadioButton id="other" text="Request For others" /> -->
+      </RadioButtonGroup>
+      
+      <!-- Simple Form Section -->
+      <HBox>
+        <MultiComboBox
+        id="multiComboBox"
+        placeholder="Choose the system(s)"
+        selectionChange="onSelectionChange"
+        change="onComboBoxChange">
+         <core:Item text="System 1" />
+          <core:Item text="System 2" />
+          <core:Item text="System 3" />
+        <!-- <core:Item key="{roleId}" text="{roleName}" /> -->
+    </MultiComboBox>
+        <!-- <Select class="sapUiMediumMarginEnd">
+          <core:Item text="System 1" />
+          <core:Item text="System 2" />
+          <core:Item text="System 3" />
+        </Select> -->
+
+        <Label text="User Name" class="sapUiTinyMargin" />    
+        <Input value="Kushal" editable="false" placeholder="User ID *" />
+      </HBox>
+
+      <Button text="Submit" type="Emphasized" press="onSubmitPress" />
+    </VBox>
+    <!-- add request detail -->
+    <VBox id="dataview" visible="false">
+    <HBox class="sapUiMediumMarginTop sapUiMediumMarginBegin sapUiMediumMarginEnd" justifyContent="SpaceBetween">
+    <HBox> 
+    <Text text="Roles" class="boldLargeText" />
+    </HBox>
+    
+<!-- 
+    <HBox>
+      <MultiComboBox
+      class="sapUiTinyMarginEnd"
+        placeholder="Copy From User"
+        selectionChange="onSelectionChange"
+        change="onComboBoxChange">
+         <core:Item text="User 1" />
+          <core:Item text="User 2" />
+          <core:Item text="User 3" />
+    </MultiComboBox>
+        
+        <MultiComboBox
+        class="sapUiTinyMarginBegin sapUiTinyMarginEnd"
+        placeholder="Select Business Role"
+        selectionChange="onSelectionChange"
+        change="onComboBoxChange">
+         <core:Item text="Role 1" />
+          <core:Item text="Role 2" />
+          <core:Item text="Role 3" />
+    </MultiComboBox>
+    
+     <Button icon="sap-icon://badge"  class="sapUiMediumMarginBegin" press="onAnalyzeRiskPress" text="Analyze Risk" type="Reject"  />   
+
+    </HBox>    -->
+
+    
+    </HBox>
+
+    <VBox class="sapUiSmallMarginTop">
+      <IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+        <items>
+          <IconTabFilter text="E1004" key="info">
+           <HBox justifyContent="End">
+      <MultiComboBox
+      class="sapUiTinyMarginEnd"
+        placeholder="Copy From User"
+        selectionChange="onSelectionChange"
+        change="onComboBoxChange">
+         <core:Item text="User 1" />
+          <core:Item text="User 2" />
+          <core:Item text="User 3" />
+        <!-- <core:Item key="{roleId}" text="{roleName}" /> -->
+    </MultiComboBox>
+        
+    <!-- <Select class="sapUiTinyMarginEnd" width="200px">
+          <core:Item text="Select Business Role" />
+          <core:Item text="Role 2" />
+          <core:Item text="Role 3" />
+        </Select> -->
+        <MultiComboBox
+        class="sapUiTinyMarginBegin sapUiTinyMarginEnd"
+        placeholder="Select Business Role"
+        selectionChange="onSelectionChange"
+        change="onComboBoxChange">
+         <core:Item text="Role 1" />
+          <core:Item text="Role 2" />
+          <core:Item text="Role 3" />
+        <!-- <core:Item key="{roleId}" text="{roleName}" /> -->
+    </MultiComboBox>
+    
+     <Button icon="sap-icon://badge"  class="sapUiSmallMarginBegin" press="onAnalyzeRiskPress" text="Analyze Risk" type="Reject"  />   
+
+    </HBox>   
+            <l:VerticalLayout id="containerLayout" width="100%">
+              <l:BlockLayout id="BlockLayout" background="Dashboard">
+                <l:BlockLayoutRow>
+                  <l:BlockLayoutCell id="Accent1">
+                    <f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ColumnLayout" singleContainerFullSize="false" ariaLabelledBy="Title1">
+                      <f:content>
+                       <!-- <Label text="Valid From" labelFor="validFromField" />
+                        <DatePicker id="validFrom" placeholder="Select start date" />
+                         <Label text="Valid To" labelFor="validToField" />
+                        <DatePicker id="validTo" placeholder="Select end date" /> -->
+                        <Label text="User Group" />
+                        <Input value="{SupplierName}" />
+                        <Label text="User Type" />
+                        <Input value="{Street}" />
+                        <Label text="License Category" />
+                        <Select id="lc" selectedKey="">
+                          <items>
+                            <core:Item text="c1" key="England" />
+                            <core:Item text="c2" key="Germany" />
+                            <core:Item text="c3" key="USA" />
+                          </items>
+                        </Select>
+                      </f:content>
+                    </f:SimpleForm>
+                  </l:BlockLayoutCell>
+
+                  <l:BlockLayoutCell width="2">
+               
+                   
+                    <Table id="table3" inset="false">
+                    	<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer />
+					<Button class="sapUiTinyMarginEnd" icon="sap-icon://account" 
+     press="onAddRolesPress"
+     text="Add Roles" type="Success"  />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+                      <columns>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                          <Text text="Role Name" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                          <Text text="Description" />
+                        </Column>
+                         <Column minScreenWidth="Tablet" demandPopin="true">
+                          <Text text="Valid From" />
+                        </Column>
+                         <Column minScreenWidth="Tablet" demandPopin="true">
+                          <Text text="Valid To" />
+                        </Column>
+                         <Column minScreenWidth="Tablet" demandPopin="true">
+                          <Text text="Action" />
+                        </Column>
+                      </columns>
+
+                      <items>
+                        <ColumnListItem vAlign="Middle" >
+                          <cells>
+                            <Link text="329724aba" press="handleLinkPress" />
+                            <Text text="normal" />
+                            <Text text="normal" />
+                            <Text text="normal" />
+                            <Text text="Start" />
+                          </cells>
+                        </ColumnListItem>
+                      </items>
+                    </Table>
+                  </l:BlockLayoutCell>
+                </l:BlockLayoutRow>
+              </l:BlockLayout>
+            </l:VerticalLayout>
+          </IconTabFilter>
+
+          <IconTabFilter text="E1001" key="E1001">
+            <!-- Add your attachment content here -->
+          </IconTabFilter>
+
+          <IconTabFilter text="E1007" key="E1007">
+            <Text text="Notes go here ..." />
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+    </VBox>
+    	<OverflowToolbar>
+				<content>
+					<ToolbarSpacer />
+					<Button class="sapUiSmallMargin" icon="sap-icon://account" 
+     press=""
+     text="Submit" type="Emphasized"  />
+				</content>
+			</OverflowToolbar>
+    </VBox>
+  </Page>
+</mvc:View>

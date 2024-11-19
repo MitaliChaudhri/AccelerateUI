@@ -1,0 +1,205 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog
+        showHeader="true"
+        title="Add Approver Group"
+        titleAlignment="Center"
+        
+       
+    >
+        <content>
+<!-- <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="2"
+                columnsM="2"
+                singleContainerFullSize="false"
+            >
+            <f:content> -->
+
+
+            <l:BlockLayout id="BlockLayout" >
+			<l:BlockLayoutRow accentCells="Accent1">
+				<l:BlockLayoutCell >
+					<Label
+                        text="Path Name"
+                        required="true"
+                        textAlign="Begin"
+                    />
+                    <Input
+                        value="{}"
+                        maxLength="30"
+                        required="true"
+                        change="onLiveChange"
+                    
+                    />
+				</l:BlockLayoutCell>
+				<l:BlockLayoutCell >
+					<Label
+                        text="Path Description"
+                        required="true"
+                        textAlign="Center"
+                    />
+                    <Input
+                        value="{}"
+                        maxLength="30"
+                        required="true"
+                        change="onLiveChange"
+                    />
+				</l:BlockLayoutCell>
+			</l:BlockLayoutRow>
+            </l:BlockLayout>
+        
+
+            <Panel expandable="false"> 
+            <headerToolbar>
+			<OverflowToolbar style="Clear">
+				<Title text="Custom Toolbar with a header text" />
+				<ToolbarSpacer />
+				<Button icon="sap-icon://add" text="Add Groups" type="Success" press="onAddGroups" />
+				
+			</OverflowToolbar>
+		</headerToolbar>
+            <Table noDataText="No data" class = "sapUiLargeMarginBottom"  items = "{oModel>/groups}" id="groupid">
+                <columns>
+                    <Column>
+                        <Label text="STAGE NO" />
+                    </Column>
+                    <Column>
+                        <Label text="APPROVER GROUP" />
+                    </Column>
+                    <Column>
+                        <Label text="ESCALATION" />
+                    </Column>
+                    <Column>
+                        <Label text="ESCALATION ACTION" />
+                    </Column>
+                    <Column>
+                        <Label text="TIME" />
+                    </Column>
+                    <Column>
+                        <Label text="ADDITIONAL CHECKS" />
+                    </Column>
+                    <Column>
+                        <Label text="ROUTE REQUEST" />
+                    </Column>
+                    <Column>
+                        <Label text="RISK ROUTE PATH" />
+                    </Column>
+                    <Column>
+                        <Label text="ACTION" />
+                    </Column>
+                </columns>
+
+                <ColumnListItem>
+                    <cells>
+                        <Input value="{}" />
+
+                        <Input value = "{}"/>
+
+                        <!-- <ComboBox
+                                name="Approver Group"
+                        >
+                        <core:Item
+                                    key="{oModel>id}"
+                                    text="{oModel>text}"
+                                />
+                        </ComboBox> -->
+
+                        <CheckBox text="" selected="{oModel>escalation}" select="onCheckboxSelectEsc"/>
+
+                        <ComboBox
+                                name="Escalation action"
+                                items="{oModel>/payload/EscalationType}"
+                              enabled="{= ${oModel>escalation} === true}"
+                        >
+                        <core:Item
+                                    key="{oModel>id}"
+                                    text="{oModel>text}"
+                                />
+                        </ComboBox>
+
+                        <TimePicker
+                        width="100%"
+                        valueState="{valueState}"
+                        valueStateText="{valueStateText}"
+                      enabled="{= ${oModel>escalation} === true}"/>
+
+                     <CheckBox text="" selected="{oModel>additionalchecks}"/>
+
+                        <ComboBox
+                                name="Route request"
+                                items="{oModel>/payload/RouteRequest}"
+                              enabled="{= ${oModel>additionalchecks} === true}"
+                        >
+                        <core:Item
+                                    key="{oModel>id}"
+                                    text="{oModel>text}"
+                                />
+                        </ComboBox>
+
+                        <ComboBox
+                                name="risk route path"
+                                items="{oModel>/payload/Path}"
+                                enabled="{= ${oModel>additionalchecks} === true}"
+                        >
+                        <core:Item
+                                    key="{oModel>id}"
+                                    text="{oModel>text}"
+                                />
+                        </ComboBox>
+
+
+                        <Button
+                            icon="sap-icon://delete"
+                            type="Reject"
+                            press="onDeleteGroups"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </Table>
+        </Panel>
+        </content>
+
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button
+                        width="10%"
+                        visible="{}"
+                        type="Accept"
+                        text="Save"
+                        press=".onSavePaths"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        width="10%"
+                        type="Reject"
+                        text="Cancel"
+                        press=".onCancelPathsFragment"
+                        ariaHasPopup="Dialog"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

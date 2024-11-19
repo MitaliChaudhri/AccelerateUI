@@ -1,0 +1,101 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:upload="sap.m.upload" xmlns:u="sap.ui.unified"
+		xmlns:t="sap.ui.table"
+		xmlns:layout="sap.ui.layout" xmlns:c="sap.ui.core"  xmlns:m="sap.m">
+   <Dialog
+      id="helloDialog"
+      title ="Schedule Job" contentHeight="250px" contentWidth="750px">
+			<HBox class="sapUiSmallMarginTop">
+            <Label text="Connector Name" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+				<Select id="country" class="sapUiLargeMarginEnd">
+					<items>
+						<core:Item text="TGDCLNT210" key="TGDCLNT210"/>
+						<core:Item text="TGDCLNT300" key="TGDCLNT300"/>
+					</items>
+				</Select>
+            <Label text="Sync Type" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+				<Select class="sapUiLargeMarginEnd">
+					<items>
+						<core:Item text="Delta" key="Delta"/>
+						<core:Item text="Full" key="Full"/>
+					</items>
+				</Select>
+                 <CheckBox text="Start Immediately" select="onSelectStart" id="startimm"/>
+            </HBox>       
+<!-- <Panel>
+	<FlexBox
+				height="100px"
+				alignItems="Start"
+				justifyContent="Start"> -->
+				<HBox>
+				<RadioButtonGroup columns="3" width="100%" class="sapUiMediumMarginBottom" select="onSelectRecurring" id="radiobtn">
+			<RadioButton id="onetime" text="One Time"/>
+			<RadioButton id="recurring" text="Recurring"/>
+		</RadioButtonGroup>
+				</HBox>
+				
+			<!-- </FlexBox> -->
+			<HBox visible="{oModel>/bOneTime}">
+			<Label text="Start Date" labelFor="DP1" required="true" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+				<DateTimePicker
+			id="DTP1"
+			placeholder="Enter Date"
+			change="handleChange"
+			class="sapUiSmallMarginBottom" width="100%"/>
+			</HBox>
+			 	
+            <!-- </Panel> -->
+<HBox class="sapUiSmallMarginTop" visible="{oModel>/bRecurring}">
+            <Label text="Recurring Plan" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+				<Select class="sapUiLargeMarginEnd">
+					<items>
+						<core:Item text="Hourly" key="Hourly"/>
+						<core:Item text="Weekly" key="Weekly"/>
+						<core:Item text="Monthly" key="Monthly"/>
+					</items>
+				</Select>
+            <Label text="Start Date" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+					<DatePicker
+					id="DP1"
+					placeholder="Enter Date"
+					change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+                 <Label text="End Date" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+					<DatePicker
+					id="DP2"
+					placeholder="Enter Date"
+					change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+            </HBox>
+			
+			<HBox id="recurringId1" visible="{oModel>/bRecurring}">
+			<Label text="Start Time" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+			<TimePicker
+				id="TP6"
+				width="80%"/>
+			</HBox>
+			  
+			  <HBox class="sapUiSmallMarginTop" visible="{oModel>/bStartImmed}">
+            <Label text="Recurring Plan" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+				<Select class="sapUiLargeMarginEnd">
+					<items>
+						<core:Item text="Monthly" key="Monthly"/>
+					</items>
+				</Select>
+                 <Label text="End Date" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+					<DatePicker
+					id="DP3"
+					placeholder="Enter Date"
+					change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+            </HBox>
+		 <beginButton>
+            <Button text="Save" press="onSubmit" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="onCancelPress" />
+        </endButton>
+   </Dialog>
+</core:FragmentDefinition>

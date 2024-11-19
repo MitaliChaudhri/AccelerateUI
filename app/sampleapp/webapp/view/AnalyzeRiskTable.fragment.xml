@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog
+        id="analyzeRiskDialog"
+        title="Analyze Risk"
+        stretch="false"
+        draggable="true"
+        resizable="true"
+        class="sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer">
+        
+        <content>
+            <Table
+                inset="false"
+                items="{/riskData}">
+                <columns>
+                    <Column>
+                        <Text text="Risk ID" />
+                    </Column>
+                    <Column>
+                        <Text text="Risk Description" />
+                    </Column>
+                    <Column>
+                        <Text text="Risk Level" />
+                    </Column>
+                    <Column>
+                        <Text text="Mitigation" />
+                    </Column>
+                </columns>
+                
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{riskId}" />
+                            <Text text="{description}" />
+                            <Text text="{level}" />
+                            <Text text="{mitigation}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+
+        <endButton>
+            <Button text="Close" press="onCloseRiskDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

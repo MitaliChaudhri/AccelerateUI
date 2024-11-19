@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:upload="sap.m.upload" xmlns:u="sap.ui.unified"
+		xmlns:t="sap.ui.table"
+		xmlns:layout="sap.ui.layout" xmlns:c="sap.ui.core"  xmlns:m="sap.m">
+   <Dialog title ="Role Owners">
+		<Table
+		inset="false">
+		<columns>
+			<Column
+				width="12em">
+				<Text text="FileName" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true" hAlign="Center">
+				<Text text="Created by" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Imported" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Action" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+		 <!-- <beginButton>
+            <Button text="Save" press="onSubmit" />
+        </beginButton> -->
+        <endButton>
+            <Button text="Cancel" press="onCancelRole" />
+        </endButton>
+   </Dialog>
+</core:FragmentDefinition>
